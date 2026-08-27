@@ -1,15 +1,15 @@
 class Solution {
 public:
-    int fib(int n) {
-        if(n ==1 || n== 0){
-            return n ;
-        }else{
-            return fib(n-1) + fib(n-2);
-        }
-       //int  sum = 0 ; 
-      // findfib(n , sum);
-       //return sum ;
-       
+int fib(int n) {
+        //base case 
+    if(n<=1){
+        return n ; 
+    }
+    //recursive case 
+    int l = fib(n -1) ;
+    int r = fib(n-2) ;
+    return l +r ;
+
     }
 };
 
