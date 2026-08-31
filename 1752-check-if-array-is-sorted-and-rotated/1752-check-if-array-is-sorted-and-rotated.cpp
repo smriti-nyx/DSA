@@ -3,23 +3,17 @@ public:
 //iy
     bool check(vector<int>& nums) {
         int n = nums.size() ; 
+        int cnt = 0 ;
     
-    //always sort n store this way 
-       vector<int>og = nums ;
-       sort(og.begin() , og.end()) ;
-     //B = nums , A = og 
-
-     //to find the index of the minm elemnt 
-
-     int minidx = min_element(nums.begin() , nums.end()) - nums.begin(); //addressof minvalue - address of idx =0 
-
-
-       for(int i =0 ; i <n;i++){
-        if(nums[i] != og[(i+(nums.size() - minidx))%nums.size()]){
-            return false ; 
+       for(int i =1 ; i <n;i++){
+        if(nums[i-1] >nums[i]){
+            cnt++; 
         }
        }
-      return true ; 
+       if(nums[n-1]>nums[0]){
+            cnt++ ; 
+        }
+      return cnt<=1;  //less than sign added because if the array has all the elements same , the cnt will be 0.
     }
 };
 
