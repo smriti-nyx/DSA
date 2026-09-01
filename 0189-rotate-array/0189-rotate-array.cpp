@@ -5,7 +5,7 @@ public:
         int n = nums.size(); 
         k=k%n;
        
-
+         if(k==0|| k == n ) return ; 
        //reversing the entire array
        reverse(nums.begin() , nums.end()) ;
 
