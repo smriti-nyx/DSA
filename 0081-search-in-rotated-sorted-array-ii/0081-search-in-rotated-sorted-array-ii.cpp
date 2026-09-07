@@ -10,6 +10,7 @@ public:
 
             if(nums[mid] == target) return true ; 
               
+              //since there are repeated elements , we shrink our seach space first like this .
               if(nums[low] == nums[mid] && nums[mid] == nums[high]){
                 high-- , low++ ; 
                 continue ; 
