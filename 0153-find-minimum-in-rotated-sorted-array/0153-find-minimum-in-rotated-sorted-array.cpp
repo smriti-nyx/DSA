@@ -15,14 +15,15 @@ public:
 
             // checking if left half is  sorted 
              if(nums[mid]>=nums[low]){
-                val = *min_element(nums.begin() + low , nums.begin() + mid +1 );
-                ans = min(ans , val);
+                //or since the array is sorted , we can already write ans = min(ans , nums[low])
+                //val = *min_element(nums.begin() + low , nums.begin() + mid +1 );
+                ans = min(ans , nums[low]);
                 //if sorted , we remove that search space 
                 low = mid +1 ; 
 
              }else{ //checking if right half is sorted 
-             val = *min_element(nums.begin() + mid , nums.begin() + high +1) ;
-             ans = min(ans , val);
+             //val = *min_element(nums.begin() + mid , nums.begin() + high +1) ;
+             ans = min(ans , nums[mid]);
              //if sorted , we remove that search space 
              high = mid -1 ;
              }
