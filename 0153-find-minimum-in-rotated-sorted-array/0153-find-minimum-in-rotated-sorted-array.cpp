@@ -12,22 +12,22 @@ public:
         int val = 0 ; 
         while(low<=high){
             int mid = (low+high)/2 ; 
-
-            // checking if left half is  sorted 
-             if(nums[mid]>=nums[low]){
-                //or since the array is sorted , we can already write ans = min(ans , nums[low])
-                //val = *min_element(nums.begin() + low , nums.begin() + mid +1 );
-                ans = min(ans , nums[low]);
-                //if sorted , we remove that search space 
-                low = mid +1 ; 
-
-             }else{ //checking if right half is sorted 
-             //val = *min_element(nums.begin() + mid , nums.begin() + high +1) ;
-             ans = min(ans , nums[mid]);
-             //if sorted , we remove that search space 
-             high = mid -1 ;
+             //most optimised version 
+             if(nums[low]<= nums[high]){
+                 ans = min(ans , nums[low]);
+                break ; 
              }
-        }
+            // if left half is sorted
+             if(nums[low]<=nums[mid]){
+                ans = min(ans , nums[low]); //store min
+                low = mid +1; //move to the right half 
+             }else{//if right half is sorted 
+                ans = min(nums[mid] , ans); //store min 
+                high = mid -1 ;  //look at the left side
+             }
+          
+             }
+        
         return ans ;
     }
 };
