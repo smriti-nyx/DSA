@@ -11,7 +11,7 @@ public:
             int mid = (low+high)/2 ; 
             if(nums[mid]>nums[mid+1]&&nums[mid]>nums[mid-1]){
                 return mid ; 
-            }
+            }//the goal is to find the larger element wrt mid and go on its side w binary search
             if(nums[mid]<nums[mid+1]){
                  low = mid+1 ; 
             }else{
