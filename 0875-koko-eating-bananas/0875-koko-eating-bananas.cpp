@@ -1,5 +1,12 @@
 class Solution {
 public:
+int findmax(vector<int>& piles){
+    int maxi = INT_MIN ; 
+    for(int i = 0 ; i <piles.size() ; i++){
+        maxi = max(maxi , piles[i]);
+    }
+    return maxi ; 
+}
 long long K(vector<int>& piles , int k){
     long long time = 0 ;
         for(int i = 0 ; i <piles.size() ; i++){
@@ -10,7 +17,7 @@ long long K(vector<int>& piles , int k){
 
     int minEatingSpeed(vector<int>& piles, int h) {
         //1 , max e
-        int high = *max_element(piles.begin() , piles.end());
+        int high = findmax(piles);
         int low = 1 ; 
         int ans = INT_MAX ; 
         while(low<=high){
