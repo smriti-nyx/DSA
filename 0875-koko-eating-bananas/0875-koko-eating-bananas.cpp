@@ -10,7 +10,7 @@ int findmax(vector<int>& piles){
 long long K(vector<int>& piles , int k){
     long long time = 0 ;
         for(int i = 0 ; i <piles.size() ; i++){
-          time += ceil((double)piles[i]/k);
+          time += ceil((double)piles[i]/(double)k);
         }
         return time; 
 }
