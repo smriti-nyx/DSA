@@ -10,13 +10,15 @@ int findmax(vector<int>& piles){
 long long K(vector<int>& piles , int k){
     long long time = 0 ;
         for(int i = 0 ; i <piles.size() ; i++){
-          time += ceil((double)piles[i]/(double)k);
+          time += ((piles[i]+k-1)/k ); //ceil((double)piles[i]/(double)k)
         }
         return time; 
 }
 
     int minEatingSpeed(vector<int>& piles, int h) {
         //1 , max e
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int high = findmax(piles);
         int low = 1 ; 
         int ans = INT_MAX ; 
