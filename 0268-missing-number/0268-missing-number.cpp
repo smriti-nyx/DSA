@@ -1,17 +1,20 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
+        sort(nums.begin() , nums.end());
         int n = nums.size();
-        vector<int> v(n+1, -1);
-        //sort(nums.begin() , nums.end());
-       // int ans = 0;
-        for(int i = 0 ; i <nums.size() ; i++){
-           v[nums[i]] = nums[i] ;
-             }
-             for(int i = 0 ; i <v.size() ; i++){
-                if(v[i]== -1 )return i;
-             }
-              return 0;
+        int l = 0 ; 
+        int h = n;
+        while(l<h){
+            int m = (l +h)/2 ; 
+            
+            if(nums[m] == m ){
+                l = m+1 ; 
+            }else{
+                h = m ;
+            }
+        }
+        return l; 
     }
 };
 
