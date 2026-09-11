@@ -11,7 +11,7 @@ int findsum(vector<int>& nums ,int divisor ){
         int n = nums.size() ; 
         int low = 1 ; 
         int high = *max_element(nums.begin(),nums.end()) ; 
-        int ans = INT_MIN ; 
+        int ans = -1 ; 
         while(low<=high){
             int mid = (low+high)/2 ; 
              int mythreshold = findsum(nums , mid);
