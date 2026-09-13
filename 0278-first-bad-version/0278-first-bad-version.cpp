@@ -6,16 +6,21 @@ public:
     int firstBadVersion(int n) {
         int low = 1 ; 
         int high = n ; 
-        int ans = n; 
+        int mid = low +(high-low)/2;
+        if(n==1){
+        return n ; 
+        } 
+
         while(low<high){
-            int mid = low+(high-low)/2;
+            //int mid = low+(high-low)/2;
              if (!isBadVersion(mid)){
                 low = mid+1 ;
              }else{
                 high = mid ;
              }
+             mid = low+(high-low)/2;
         }
-        return high ; 
+        return mid ; 
     }
 };
 
