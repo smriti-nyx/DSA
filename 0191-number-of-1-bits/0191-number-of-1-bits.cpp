@@ -6,7 +6,7 @@ public:
         if(n%2 != 0 ){
             ones +=1;
         }
-        n /=2 ; 
+        n>>=1; 
        }
        return ones ; 
     }
