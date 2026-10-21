@@ -1,24 +1,27 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        //brute force
-        if(nums.empty()){
+       //optimal approach 
+        int n = nums.size();
+        if(n==0){
             return 0 ; 
         }
-        sort(nums.begin() , nums.end()) ; 
-        int smaller = INT_MIN ; 
-        int cnt = 1 ; 
-        int longest = 1 ; 
-        for(int i = 0 ; i <nums.size()-1 ; i++){
-            if(nums[i+1] == nums[i]+1){
-                cnt++ ; 
-                smaller = nums[i+1];
-            }else if (nums[i+1]==nums[i]){
-
-            }else{
-                cnt =1 ;
+        int longest =1 ; 
+         
+        unordered_set<int> st(nums.begin() , nums.end());
+        for(auto it :st){
+            if(st.find(it-1)==st.end()){
+                int x = it ; 
+                int cnt = 1 ;
+                while(st.find(x+1)!=st.end()){
+                    x = x+1 ; 
+                    cnt++ ; 
+                }
+                longest = max(cnt , longest) ; 
             }
-                longest = max(longest , cnt);
+
+//ranslates to: "Is the number it - 1 not present in the set?"
+            //st.find(it - 1): This searches your unordered_set (st) for the number immediately before the current number (it - 1).
         }
         return longest ; 
     }
