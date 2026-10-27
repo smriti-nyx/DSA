@@ -1,21 +1,31 @@
 class Solution {
 public:
     int longestSubarray(vector<int> &nums, int k) {
-        int n = nums.size();
-        int bestlen = 0;
-        int sum = 0 ;
-
-        for (int i = 0; i < n; i++) {
-            sum =0;
-            for (int j = i; j < n; j++) {
-                sum+= nums[j];
-                //int sum = 0; // Reset sum here so it only calculates for the current subarray [i...j]
-                if (sum == k) {
-                    bestlen = max((j - i + 1), bestlen);
-                }
+        map<long long , int > presummpp ; 
+        int sum =0; 
+        int bestlen = 0 ; 
+        
+        int n = nums.size(); 
+        for(int i = 0 ; i < n ; i ++){
+            sum+= nums[i] ; 
+            if(sum == k ){
+            bestlen = max(bestlen , i+1);
             }
-        } // Added missing closing brace for the outer loop
-        return bestlen;
+           ///if not
+            
+            long long  rem = sum - k ; 
+            if(presummpp.find(rem)!=presummpp.end()){
+                int len = i - presummpp[rem]; 
+                 bestlen = max(len , bestlen); 
+
+            }
+            //ading the prefix sums to the hashmap 
+        if(presummpp.find(sum) == presummpp.end()){
+            presummpp[sum] = i ; //key and value pair creation where i is the ke
+        }
+    
+        }
+        return bestlen ; 
     }
 };
 
